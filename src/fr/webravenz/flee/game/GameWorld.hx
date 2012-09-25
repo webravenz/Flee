@@ -1,6 +1,6 @@
 package fr.webravenz.flee.game;
 import com.haxepunk.World;
-import fr.webravenz.flee.game.entities.Joueur;
+import fr.webravenz.flee.game.entities.Ship;
 
 /**
  * ...
@@ -10,7 +10,7 @@ import fr.webravenz.flee.game.entities.Joueur;
 class GameWorld extends World
 {
 	
-	private var _joueur:Joueur;
+	private var _ship:Ship;
 
 	public function new() 
 	{
@@ -19,8 +19,8 @@ class GameWorld extends World
 	
 	public override function begin() {
 		
-		_joueur = new Joueur(200, 200);
-		add(_joueur);
+		_ship = new Ship(200, 200);
+		add(_ship);
 		
 	}
 	

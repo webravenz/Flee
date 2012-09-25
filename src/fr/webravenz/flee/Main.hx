@@ -1,5 +1,6 @@
 package fr.webravenz.flee;
 
+import fr.webravenz.flee.game.config.Sizing;
 import fr.webravenz.flee.game.Game;
 import nme.display.Sprite;
 import nme.events.Event;
@@ -27,7 +28,26 @@ class Main extends Sprite
 
 	private function init(e) 
 	{
-		_game = new Game(stage.stageWidth, stage.stageHeight);
+		
+		// get window size
+		var ww:Int = stage.stageWidth;
+		var wh:Int = stage.stageHeight;
+			
+		if (wh > ww) {
+			var t:Int = ww;
+			ww = wh;
+			wh = t;
+		}
+		
+		// init sizing variables
+		Sizing.init(ww, wh);
+		
+		// calculate game dimensions
+		var gh:Int = Sizing.initialHeight;
+		var gw:Int = Math.floor(ww / Sizing.scale);
+		
+		// init game
+		_game = new Game(gw, gh);
 	}
 	
 	static public function main() 
