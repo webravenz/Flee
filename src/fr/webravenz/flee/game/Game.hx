@@ -1,37 +1,54 @@
 package fr.webravenz.flee.game;
 
-import com.haxepunk.Engine;
-import com.haxepunk.HXP;
-import fr.webravenz.flee.game.config.Sizing;
+import fr.webravenz.engine.display.ASprite;
+import fr.webravenz.engine.display.EntitiesLayer;
+import fr.webravenz.flee.config.Sizing;
 import fr.webravenz.flee.game.controls.Controls;
+import fr.webravenz.flee.game.data.GameVars;
+import fr.webravenz.flee.game.entities.Ship;
+import nme.events.Event;
+import fr.webravenz.flee.game.layer.Galeries;
 
-class Game extends Engine
+class Game extends ASprite
 {
+	
+	private var _galeriesLayer:Galeries;
+	private var _frontLayer:EntitiesLayer;
+	private var _ship:Ship;
 
-	public static inline var kFrameRate:Int = 60;
-	public static inline var kClearColor:Int = 0xffc038;
-
-	public function new(width, height)
+	public function new()
 	{
-		super(width, height, kFrameRate, false);
+		super();
 	}
 
-	override public function init()
-	{
-#if debug
-	#if flash
-		if (flash.system.Capabilities.isDebugger)
-	#end
-		{
-			HXP.console.enable();
-		}
-#end
-		HXP.screen.color = kClearColor;
-		HXP.screen.scale = 1;
-		//HXP.screen.smoothing = true;
-		HXP.world = new GameWorld();
+	private override function _onAddedToStage():Void {
 		
 		Controls.start(stage);
+		
+		GameVars.init();
+		
+		// layer for scrolling landscape
+		_galeriesLayer = new Galeries();
+		addChild(_galeriesLayer);
+		
+		// layer for ship and obstacles
+		_frontLayer = new EntitiesLayer();
+		addChild(_frontLayer);
+		
+		// init ship
+		_ship = new Ship(200, 200);
+		_frontLayer.addEntity(_ship);
+		
+		// start game loop
+		addEventListener(Event.ENTER_FRAME, _update);
+		
+	}
+	
+	private function _update(e:Event):Void 
+	{
+		
+		_galeriesLayer.update();
+		_frontLayer.update();
 		
 	}
 

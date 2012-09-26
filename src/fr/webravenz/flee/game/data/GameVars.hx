@@ -12,7 +12,7 @@ class GameVars
 	
 	public static function init():Void {
 		
-		SCROLL_SPEED = 20;
+		SCROLL_SPEED = 5;
 		
 	}
 	

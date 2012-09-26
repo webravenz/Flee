@@ -1,7 +1,9 @@
 package fr.webravenz.flee;
 
-import fr.webravenz.flee.game.config.Sizing;
+import fr.webravenz.engine.Engine;
+import fr.webravenz.flee.config.Sizing;
 import fr.webravenz.flee.game.Game;
+import nme.display.FPS;
 import nme.display.Sprite;
 import nme.events.Event;
 import nme.Lib;
@@ -42,12 +44,14 @@ class Main extends Sprite
 		// init sizing variables
 		Sizing.init(ww, wh);
 		
-		// calculate game dimensions
-		var gh:Int = Sizing.initialHeight;
-		var gw:Int = Math.floor(ww / Sizing.scale);
+		Engine.setSize(ww, wh, wh / Sizing.initialHeight);
 		
 		// init game
-		_game = new Game(gw, gh);
+		_game = new Game();
+		addChild(_game);
+		
+		// debug
+		addChild(new FPS(10, 10, 0xFFFFFF));
 	}
 	
 	static public function main() 

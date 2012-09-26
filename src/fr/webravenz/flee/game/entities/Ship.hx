@@ -1,8 +1,9 @@
 package fr.webravenz.flee.game.entities;
-import com.haxepunk.Entity;
-import com.haxepunk.graphics.Spritemap;
-import fr.webravenz.flee.game.config.Sizing;
+import fr.webravenz.engine.display.Entity;
+import fr.webravenz.flee.config.Sizing;
 import fr.webravenz.flee.game.controls.Controls;
+import nme.Assets;
+import nme.display.Bitmap;
 import nme.geom.Point;
 
 /**
@@ -12,24 +13,22 @@ import nme.geom.Point;
 
 class Ship extends Entity
 {
-
-	private var _sprite:Spritemap;
 	
-	public function new(x:Float, y:Float) 
+	public function new(posX:Float, posY:Float) 
 	{
-		super(x, y);
+		super();
 		
-		_sprite = new Spritemap("gfx/entities/ship.png", 123, 104);
-		_sprite.add('fly', [0]);
-		_sprite.play('fly');
-		_sprite.x = -75;
-		_sprite.y = -55;
+		x = posX;
+		y = posY;
 		
-		_graphic = _sprite;
-		
+		var image:Bitmap = new Bitmap(Assets.getBitmapData('gfx/entities/ship.png'));
+		image.smoothing = true;
+		image.x = -80;
+		image.y = -55;
+		addChild(image);
 	}
 	
-	public override function update():Void {
+	private override function _update():Void {
 		
 		var pos:Point = Controls.getPosition();
 		
@@ -38,7 +37,7 @@ class Ship extends Entity
 			y = pos.y;
 		}
 		
-		super.update();
+		super._update();
 		
 	}
 	

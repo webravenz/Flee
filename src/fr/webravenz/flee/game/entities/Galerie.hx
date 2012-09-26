@@ -1,8 +1,10 @@
 package fr.webravenz.flee.game.entities;
-import com.haxepunk.Entity;
-import com.haxepunk.graphics.Image;
-import fr.webravenz.flee.game.config.Sizing;
+import fr.webravenz.engine.Engine;
+import fr.webravenz.flee.config.Sizing;
 import fr.webravenz.flee.game.data.GameVars;
+import fr.webravenz.engine.display.Entity;
+import nme.Assets;
+import nme.display.Bitmap;
 
 /**
  * ...
@@ -12,20 +14,20 @@ import fr.webravenz.flee.game.data.GameVars;
 class Galerie extends Entity
 {
 	
-	private var _image:Image;
-
-	public function new(x:Int, top:Bool)
+	private var _image:Bitmap;
+	
+	public function new(top:Bool)
 	{
 		
-		var y:Int = top ? 0 : Sizing.initialHeight - 100;
+		super();
+		
+		y = top ? 0 : Engine.screenHeight * Engine.scale;
 		
 		var folder = top ? 'top' : 'bottom';
 		
-		_image = new Image('gfx/entities/galerie/' + folder + '/1.png');
-		
-		_graphic = _image;
-		
-		super(x, y);
+		_image = new Bitmap(Assets.getBitmapData('gfx/entities/galerie/' + folder + '/1.png'));
+		_image.smoothing = true;
+		addChild(_image);
 		
 	}
 	
@@ -35,7 +37,7 @@ class Galerie extends Entity
 		
 		super.update();
 		
-		if (x < -Sizing.galerieWidth) world.remove(this);
+		if (x < -width) layer.removeEntity(this);
 		
 	}
 	

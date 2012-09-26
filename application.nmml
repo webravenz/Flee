@@ -8,13 +8,14 @@
 	<!-- output -->
 	<app main="fr.webravenz.flee.Main" file="Flee" path="bin" />
 	
-	<window background="#000000" fps="60" />
+	<window background="#FFFFFF" fps="60" />
 	<window width="800" height="480" unless="mobile" />
 	<window orientation="landscape" vsync="true" antialiasing="0" if="cpp" />
 	
 	<!-- classpath, haxe libs -->
 	<source path="src" />
 	<haxelib name="nme" />
+	<haxelib name="tilelayer" />
 	
 	<!-- assets -->
 	<icon path="assets/nme.svg" />

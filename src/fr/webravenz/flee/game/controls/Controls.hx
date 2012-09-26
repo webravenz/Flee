@@ -1,5 +1,5 @@
 package fr.webravenz.flee.game.controls;
-import fr.webravenz.flee.game.config.Sizing;
+import fr.webravenz.flee.config.Sizing;
 import nme.display.Stage;
 import nme.events.MouseEvent;
 import nme.events.TouchEvent;
@@ -79,7 +79,7 @@ class Controls
 		if(_fingerNum == -1) {
 			_fingerNum = e.touchPointID;
 			
-			_updatePos(e.stageX + 100, e.stageY);
+			_updatePos(e.stageX, e.stageY);
 			
 			_stage.addEventListener(TouchEvent.TOUCH_MOVE, _onTouchMove);
 		}
@@ -99,7 +99,7 @@ class Controls
 	{
 		
 		if(e.touchPointID == _fingerNum) {
-			_updatePos(e.stageX + 100, e.stageY);
+			_updatePos(e.stageX, e.stageY);
 		}
 		
 	}
@@ -109,8 +109,8 @@ class Controls
 	
 	public static function _updatePos(x:Float, y:Float):Void {
 		
-		_position.x = Math.floor(x / Sizing.scale);
-		_position.y = Math.floor(y / Sizing.scale);
+		_position.x = x;
+		_position.y = y;
 		
 	}
 	
