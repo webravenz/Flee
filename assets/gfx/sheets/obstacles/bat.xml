@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://texturepacker.com-->
+<!-- $TexturePacker:SmartUpdate:21fe9709d0180191b1c295ee6b9c3bba$ -->
+<TextureAtlas imagePath="bat.png">
+    <SubTexture name="bat_1" x="2" y="52" width="148" height="58" frameX="-2" frameY="-11" frameWidth="150" frameHeight="70"/>
+    <SubTexture name="bat_2" x="2" y="2" width="150" height="48" frameX="0" frameY="-22" frameWidth="150" frameHeight="70"/>
+    <SubTexture name="bat_3" x="2" y="112" width="144" height="42" frameX="-3" frameY="-22" frameWidth="150" frameHeight="70"/>
+    <SubTexture name="bat_4" x="148" y="112" width="104" height="42" frameX="-23" frameY="-21" frameWidth="150" frameHeight="70"/>
+    <SubTexture name="bat_5" x="2" y="112" width="144" height="42" frameX="-3" frameY="-22" frameWidth="150" frameHeight="70"/>
+    <SubTexture name="bat_6" x="2" y="2" width="150" height="48" frameX="0" frameY="-22" frameWidth="150" frameHeight="70"/>
+</TextureAtlas>

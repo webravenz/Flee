@@ -5,6 +5,8 @@ import aze.display.TileLayer;
 import fr.webravenz.engine.data.Sheets;
 import fr.webravenz.engine.Engine;
 import fr.webravenz.engine.events.EntityEvent;
+import nme.Assets;
+import nme.display.Bitmap;
 import nme.display.Sprite;
 import nme.geom.Rectangle;
 
@@ -31,6 +33,9 @@ class Entity extends ASprite
 	private var _sheetLayer:TileLayer;
 	private var _sheetClip:TileClip;
 	
+	// image fixe
+	private var _image:Bitmap;
+	
 	// ocllisions
 	private var _collideGroup:Int = 0;
 	public var collides:Array<Entity> = null;
@@ -40,11 +45,11 @@ class Entity extends ASprite
 	{
 		super();
 		
+		scaleX = scaleY = Engine.scale;
+		
 	}
 	
 	private override function _onAddedToStage():Void {
-		
-		scaleX = scaleY = Engine.scale;
 		
 		if (_sheetName != null) _initClip();
 		
@@ -55,6 +60,14 @@ class Entity extends ASprite
 	private override function _onRemovedFromStage():Void {
 		
 		_displayed = false;
+		
+	}
+	
+	private function _showImage(imageName:String):Void {
+		
+		_image = new Bitmap(Assets.getBitmapData(imageName));
+		_image.smoothing = true;
+		addChild(_image);
 		
 	}
 	
@@ -69,7 +82,22 @@ class Entity extends ASprite
 			_sheetLayer.addChild(_sheetClip);
 			
 			addChild(_sheetLayer.view);
-			_sheetLayer.view.y = -_sheetClip.height / 2;
+			
+		}
+		
+	}
+	
+	// change animation
+	private function _setAnim(name:String, loop:Bool = true):Void {
+		
+		if(_currentAnim != name) {
+			
+			_currentAnim = name;
+			
+			_sheetLayer.removeChild(_sheetClip);
+			_sheetClip = new TileClip(_currentAnim, _fps);
+			_sheetClip.loop = loop;
+			_sheetLayer.addChild(_sheetClip);
 			
 		}
 		
@@ -138,7 +166,7 @@ class Entity extends ASprite
 	// set collide area
 	private function setHitArea(ax:Float, ay:Float, aw:Int, ah:Int):Void {
 		
-		_area = new Rectangle(ax * Engine.scale, ay * Engine.scale, aw * Engine.scale, ah * Engine.scale);
+		_area = new Rectangle(ax * scaleX, ay * scaleY, aw * scaleX, ah * scaleY);
 		
 	}
 	

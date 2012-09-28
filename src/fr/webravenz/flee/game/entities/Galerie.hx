@@ -14,28 +14,24 @@ import nme.display.Bitmap;
 class Galerie extends Entity
 {
 	
-	private var _image:Bitmap;
-	
 	public function new(top:Bool)
 	{
 		
 		super();
 		
-		y = top ? 0 : Engine.screenHeight * Engine.scale;
+		y = top ? 0 : Engine.screenHeight - Math.floor(40 * Engine.scale);
 		
 		var folder = top ? 'top' : 'bottom';
 		
-		_image = new Bitmap(Assets.getBitmapData('gfx/entities/galerie/' + folder + '/1.png'));
-		_image.smoothing = true;
-		addChild(_image);
+		_showImage('gfx/entities/galerie/' + folder + '/1.png');
 		
 	}
 	
-	public override function update():Void {
+	private override function _update():Void {
 		
 		x -= GameVars.SCROLL_SPEED;
 		
-		super.update();
+		super._update();
 		
 		if (x < -width) layer.removeEntity(this);
 		

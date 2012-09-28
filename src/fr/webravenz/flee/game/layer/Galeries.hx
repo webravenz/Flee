@@ -52,11 +52,13 @@ class Galeries extends EntitiesLayer
 	
 	private function createTile(pos:Float):Void {
 		
-		var tile:Galerie = new Galerie(true);
-		tile.x = pos;
-		addEntity(tile);
+		_lastTile = new Galerie(true);
+		_lastTile.x = pos;
+		addEntity(_lastTile);
 		
-		_lastTile = tile;
+		_lastTile = new Galerie(false);
+		_lastTile.x = pos;
+		addEntity(_lastTile);
 		
 	}
 	

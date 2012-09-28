@@ -17,7 +17,7 @@ class Sheets
 		if (!sheets.exists(name)) {
 			
 			var tilesheet = new SparrowTilesheet(
-				Assets.getBitmapData('assets/sheets/' + folder + '/' + name + '.png'), Assets.getText('assets/sheets/' + folder + '/' + name + '.xml'));
+				Assets.getBitmapData('gfx/sheets/' + folder + '/' + name + '.png'), Assets.getText('gfx/sheets/' + folder + '/' + name + '.xml'));
 			
 			sheets.set(name, tilesheet);
 			

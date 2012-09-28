@@ -13,16 +13,13 @@ import nme.geom.Point;
 class Controls 
 {
 	
-	private static var _position:Point;
 	private static var _stage:Stage;
 	
-	private static var _fingerNum:Int = -1;
+	private static var _pressed:Bool = false;
 	
 	public static function start(stage:Stage):Void {
 		
 		_stage = stage;
-		
-		_position = new Point(-1, -1);
 		
 		#if flash
 		_stage.addEventListener(MouseEvent.MOUSE_DOWN, _onMouseDown);
@@ -39,11 +36,9 @@ class Controls
 		#if flash
 		_stage.removeEventListener(MouseEvent.MOUSE_DOWN, _onMouseDown);
 		_stage.removeEventListener(MouseEvent.MOUSE_UP, _onMouseUp);
-		_stage.removeEventListener(MouseEvent.MOUSE_MOVE, _onMouseMove);
 		#else
 		_stage.removeEventListener(TouchEvent.TOUCH_BEGIN, _onTouchStart);
 		_stage.removeEventListener(TouchEvent.TOUCH_END, _onTouchEnd);
-		_stage.removeEventListener(TouchEvent.TOUCH_MOVE, _onTouchMove);
 		#end
 		
 	}
@@ -52,21 +47,13 @@ class Controls
 	
 	private static function _onMouseDown(e:MouseEvent) {
 		
-		_updatePos(e.stageX, e.stageY);
-		
-		_stage.addEventListener(MouseEvent.MOUSE_MOVE, _onMouseMove);
+		_pressed = true;
 		
 	}
 	
 	private static function _onMouseUp(e:MouseEvent) {
 		
-		_stage.removeEventListener(MouseEvent.MOUSE_MOVE, _onMouseMove);
-		
-	}
-	
-	private static function _onMouseMove(e:MouseEvent) {
-		
-		_updatePos(e.stageX, e.stageY);
+		_pressed = false;
 		
 	}
 	
@@ -76,49 +63,22 @@ class Controls
 	private static function _onTouchStart(e:TouchEvent):Void 
 	{
 		
-		if(_fingerNum == -1) {
-			_fingerNum = e.touchPointID;
-			
-			_updatePos(e.stageX, e.stageY);
-			
-			_stage.addEventListener(TouchEvent.TOUCH_MOVE, _onTouchMove);
-		}
+		_pressed = true;
 		
 	}
 	
 	private static function _onTouchEnd(e:TouchEvent):Void {
 		
-		if (e.touchPointID == _fingerNum) {
-			_fingerNum = -1;
-			_stage.removeEventListener(TouchEvent.TOUCH_MOVE, _onTouchMove);
-		}
-		
-	}
-	
-	private static function _onTouchMove(e:TouchEvent):Void 
-	{
-		
-		if(e.touchPointID == _fingerNum) {
-			_updatePos(e.stageX, e.stageY);
-		}
+		_pressed = false;
 		
 	}
 	#end
 	
-	// global functions
-	
-	public static function _updatePos(x:Float, y:Float):Void {
-		
-		_position.x = x;
-		_position.y = y;
-		
-	}
-	
 	// getters
 	
-	public static function getPosition():Point {
+	public static function isPressed():Bool {
 		
-		return _position;
+		return _pressed;
 		
 	}
 	

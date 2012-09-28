@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://texturepacker.com-->
+<!-- $TexturePacker:SmartUpdate:f4876afc07d8bd9e54ecda5517c94ffa$ -->
+<TextureAtlas imagePath="ship.png">
+    <SubTexture name="up" x="2" y="109" width="104" height="107" frameX="-21" frameY="-5" frameWidth="130" frameHeight="115"/>
+    <SubTexture name="up" x="108" y="109" width="112" height="105" frameX="-13" frameY="-6" frameWidth="130" frameHeight="115"/>
+    <SubTexture name="up" x="96" y="218" width="120" height="105" frameX="-6" frameY="-7" frameWidth="130" frameHeight="115"/>
+    <SubTexture name="up" x="130" y="2" width="126" height="105" frameX="0" frameY="-8" frameWidth="130" frameHeight="115"/>
+    <SubTexture name="gaz" x="2" y="327" width="124" height="105" frameX="-2" frameY="-8" frameWidth="130" frameHeight="115"/>
+    <SubTexture name="gaz" x="2" y="2" width="126" height="105" frameX="0" frameY="-8" frameWidth="130" frameHeight="115"/>
+    <SubTexture name="gaz" x="384" y="2" width="124" height="105" frameX="-2" frameY="-8" frameWidth="130" frameHeight="115"/>
+    <SubTexture name="gaz" x="258" y="2" width="124" height="105" frameX="-2" frameY="-8" frameWidth="130" frameHeight="115"/>
+    <SubTexture name="down" x="128" y="325" width="108" height="105" frameX="-18" frameY="-7" frameWidth="130" frameHeight="115"/>
+    <SubTexture name="down" x="222" y="109" width="90" height="105" frameX="-35" frameY="-5" frameWidth="130" frameHeight="115"/>
+    <SubTexture name="down" x="218" y="216" width="92" height="105" frameX="-32" frameY="-4" frameWidth="130" frameHeight="115"/>
+    <SubTexture name="down" x="2" y="218" width="92" height="107" frameX="-32" frameY="-1" frameWidth="130" frameHeight="115"/>
+</TextureAtlas>

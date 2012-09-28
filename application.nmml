@@ -8,7 +8,7 @@
 	<!-- output -->
 	<app main="fr.webravenz.flee.Main" file="Flee" path="bin" />
 	
-	<window background="#FFFFFF" fps="60" />
+	<window background="#ffc038" fps="60" />
 	<window width="800" height="480" unless="mobile" />
 	<window orientation="landscape" vsync="true" antialiasing="0" if="cpp" />
 	
@@ -19,7 +19,7 @@
 	
 	<!-- assets -->
 	<icon path="assets/nme.svg" />
-	<assets path="assets/gfx" rename="gfx" />
+	<assets path="assets/gfx" rename="gfx" include="*" />
 	<assets path="assets/font" rename="font" type="font" include="*.ttf" />
 	
 	<!-- DLLs -->
