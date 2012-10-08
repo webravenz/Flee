@@ -10,11 +10,12 @@ import fr.webravenz.flee.game.data.GameVars;
 class Stalactite extends Entity
 {
 	
-	public function new(posX:Float, scale:Float) 
+	public function new(posX:Float, posY:Float, scale:Float) 
 	{
 		super();
 		
 		x = posX;
+		y = posY;
 		scaleX *= scale;
 		scaleY *= scale;
 		

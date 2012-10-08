@@ -1,0 +1,27 @@
+{
+  "sequences": [
+    {
+      "width": 1800,
+      "obstacles": [
+        {
+          "type": "stalacmite",
+          "x": 0.1,
+          "y": 1,
+          "scale": 1
+        },
+        {
+          "type": "stalactite",
+          "x": 0.4,
+          "y": 0,
+          "scale": 0.6
+        },
+        {
+          "type": "stalacmite",
+          "x": 0.75,
+          "y": 1,
+          "scale": 0.8
+        }
+      ]
+    }
+  ]
+}

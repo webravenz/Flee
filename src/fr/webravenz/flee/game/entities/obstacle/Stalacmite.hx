@@ -11,7 +11,7 @@ import fr.webravenz.flee.game.data.GameVars;
 class Stalacmite extends Entity
 {
 	
-	public function new(posX:Float, scale:Float) 
+	public function new(posX:Float, posY:Float, scale:Float) 
 	{
 		super();
 		
@@ -23,10 +23,10 @@ class Stalacmite extends Entity
 		
 		_showImage('gfx/entities/stalacmite/1.png');
 		
-		y = Engine.screenHeight - height;
+		y = posY - height;
 		
 		_collideGroup = 2;
-		setHitArea(110, 20, 90, 560);
+		setHitArea(130, 20, 50, 550);
 	}
 	
 	private override function _update():Void {

@@ -2,6 +2,7 @@ package fr.webravenz.flee;
 
 import fr.webravenz.engine.Engine;
 import fr.webravenz.flee.config.Sizing;
+import fr.webravenz.flee.game.data.ObstaclesSequences;
 import fr.webravenz.flee.game.Game;
 import nme.display.FPS;
 import nme.display.Sprite;
@@ -45,6 +46,8 @@ class Main extends Sprite
 		Sizing.init(ww, wh);
 		
 		Engine.setSize(ww, wh, wh / Sizing.initialHeight);
+		
+		ObstaclesSequences.init();
 		
 		// init game
 		_game = new Game();

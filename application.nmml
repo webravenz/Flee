@@ -21,6 +21,7 @@
 	<icon path="assets/nme.svg" />
 	<assets path="assets/gfx" rename="gfx" include="*" />
 	<assets path="assets/font" rename="font" type="font" include="*.ttf" />
+	<assets path="assets/data" rename="data" />
 	
 	<!-- DLLs -->
 	<ndll name="std" />
