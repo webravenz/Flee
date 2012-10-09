@@ -15,8 +15,6 @@ class Stalacmite extends Entity
 	{
 		super();
 		
-		scale = Math.round(scale * 10) / 10;
-		
 		x = posX;
 		scaleX *= scale;
 		scaleY *= scale;

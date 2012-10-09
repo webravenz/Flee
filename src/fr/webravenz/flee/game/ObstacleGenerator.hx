@@ -4,6 +4,7 @@ import fr.webravenz.engine.Engine;
 import fr.webravenz.flee.game.data.GameVars;
 import fr.webravenz.flee.game.data.ObstaclesSequences;
 import fr.webravenz.flee.game.entities.obstacle.Bat;
+import fr.webravenz.flee.game.entities.obstacle.Platform;
 import fr.webravenz.flee.game.entities.obstacle.Stalacmite;
 import fr.webravenz.flee.game.entities.obstacle.Stalactite;
 
@@ -61,6 +62,10 @@ class ObstacleGenerator
 					_layer.addEntity(new Stalactite(x, y, obstacle.scale));
 				case 'stalacmite' :
 					_layer.addEntity(new Stalacmite(x, y, obstacle.scale));
+				case 'bat' :
+					_layer.addEntity(new Bat(x, y));
+				case 'platform' :
+					_layer.addEntity(new Platform(x, y, obstacle.scale, obstacle.num));
 			}
 		}
 		
